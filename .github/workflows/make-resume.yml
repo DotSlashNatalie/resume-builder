@@ -14,6 +14,7 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix build
+      - run: copy result/resume.pdf .
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "*.pdf"
