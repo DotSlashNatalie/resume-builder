@@ -17,7 +17,6 @@
       pkgs = import nixpkgs { inherit system; };
 
       resume-dev = pkgs.stdenv.mkDerivation {
-        system = "x86-64";
         name = "Resume Builder";
         version = "1.0.0";
         buildInputs = [ pkgs.gnumake oldpkgs.pandoc pkgs.texlive.combined.scheme-context ];
