@@ -10,12 +10,10 @@ jobs:
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')"
-      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: cachix/install-nix-action@v20
         with:
-          pandoc-version: '2.18' # The pandoc version to download (if necessary) and use.
-      - run: sudo apt install context
-      - run: pandoc --version
-      - run: make all
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix build
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "*.pdf"
